@@ -298,11 +298,11 @@ namespace StudentOffice
             cfgWindow.ShowDialog();
         }
 
-        private void Import_Click(object sender, RoutedEventArgs e)
-        {
-            var pw = new ProgressWindow();
-            pw.Show();
-        }
+        //private void Import_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var pw = new ProgressWindow();
+        //    pw.Show();
+        //}
 
         //private void EditMenuItem_Click(object sender, RoutedEventArgs e)
         //{
