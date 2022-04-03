@@ -14,6 +14,7 @@ namespace StudentOffice
             ((MainWindow)Owner).clientDataGrid.IsReadOnly = !(bool)enableEdit.IsChecked;
             ((MainWindow)Owner).appConfig.ContractDocFileName = pathCon.Text.Trim();
             ((MainWindow)Owner).appConfig.ReferenceDocFileName = pathSpr.Text.Trim();
+            Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
