@@ -152,7 +152,7 @@ namespace StudentOffice
 
         private void PrintReference()
         {
-            document = application.Documents.Add(appConfig.ReferenceDocFileName);
+            document = application.Documents.Add(Directory.GetCurrentDirectory() + "\\" + appConfig.ReferenceDocFileName);
             document.Activate();
 
             Student clientData = (Student)clientDataGrid.SelectedItem;
