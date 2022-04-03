@@ -1,0 +1,296 @@
+﻿<Window x:Class="StudentOffice.NewStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+        xmlns:local="clr-namespace:StudentOffice.Entities"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Loaded="Window_Loaded"
+        Title="Новый" Height="600" Width="578" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+
+    <Window.DataContext>
+        <local:Student></local:Student>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderThickness"
+          Value="0,0,0,1"/>
+            <Setter Property="Height"
+          Value="23"/>
+            <Setter Property="Margin"
+          Value="4,4,4,4"/>
+            <Setter Property="VerticalContentAlignment"
+          Value="Bottom"/>
+            <Setter Property="Foreground"
+          Value="DarkSlateGray"/>
+            <Setter Property="FontSize"
+          Value="14"/>
+            <Setter Property="FontWeight"
+          Value="Medium"/>
+            <Setter Property="VerticalAlignment"
+          Value="Center"/>
+        </Style>
+        <Style TargetType="xctk:MaskedTextBox">
+            <Setter Property="BorderThickness"
+          Value="0,0,0,1"/>
+            <Setter Property="Height"
+          Value="23"/>
+            <Setter Property="Margin"
+          Value="4,4,4,4"/>
+            <Setter Property="VerticalContentAlignment"
+          Value="Bottom"/>
+            <Setter Property="Foreground"
+          Value="DarkSlateGray"/>
+            <Setter Property="FontSize"
+          Value="14"/>
+            <Setter Property="FontWeight"
+          Value="Medium"/>
+            <Setter Property="VerticalAlignment"
+          Value="Center"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="BorderThickness"
+          Value="0,0,0,1"/>
+            <Setter Property="Margin"
+          Value="4,4,4,4"/>
+            <Setter Property="Height"
+          Value="23"/>
+            <Setter Property="Foreground"
+          Value="DarkSlateGray"/>
+            <Setter Property="FontSize"
+          Value="12"/>
+            <Setter Property="VerticalAlignment"
+          Value="Center"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+          Value="4,4,4,4"/>
+            <Setter Property="Height"
+          Value="23"/>
+            <Setter Property="FontSize"
+          Value="12"/>
+            <Setter Property="Foreground"
+          Value="DarkSlateGray"/>
+            <Setter Property="VerticalAlignment"
+          Value="Center"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize"
+          Value="12"/>
+            <Setter Property="Foreground"
+          Value="DarkSlateGray"/>
+            <Setter Property="FontWeight"
+          Value="Medium"/>
+            <Setter Property="VerticalAlignment"
+          Value="Center"/>
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="Margin"
+          Value="4,4,4,4"/>
+            <Setter Property="FontSize"
+          Value="12"/>
+            <Setter Property="Foreground"
+          Value="DarkSlateGray"/>
+            <Setter Property="FontWeight"
+          Value="Medium"/>
+            <Setter Property="VerticalAlignment"
+          Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin"
+          Value="4,4,4,4"/>
+            <Setter Property="FontSize"
+          Value="12"/>
+            <Setter Property="Foreground"
+          Value="DarkSlateGray"/>
+            <Setter Property="FontWeight"
+          Value="Medium"/>
+            <Setter Property="VerticalAlignment"
+          Value="Center"/>
+        </Style>
+
+    </Window.Resources>
+
+    <TabControl>
+        <TabItem>
+            <TabItem.Header>
+                <TextBlock Margin="3">Студент</TextBlock>
+            </TabItem.Header>
+            <TabItem.Content>
+                <Grid ShowGridLines="False" Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.801"></ColumnDefinition>
+                        <ColumnDefinition Width="199.199"/>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- ФИО -->
+                    <Label Grid.Column="0" Content="Фамилия" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="family" Text="{Binding Passport.Family}" Grid.Column="2" Grid.ColumnSpan="2"  
+                 TextChanged="Xbox_TextChanged" Margin="4,0,4,0" />
+
+                    <Label Grid.Column="0" Grid.Row="1" Content="Имя" Grid.ColumnSpan="2"></Label>
+                    <TextBox x:Name="name" Text="{Binding Passport.Name}" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" 
+                 TextChanged="Xbox_TextChanged" Margin="4,0,4,0" />
+                    <Label Grid.Column="0" Grid.Row="2" Content="Отчество" Grid.ColumnSpan="2"  ></Label>
+                    <TextBox x:Name="patron" Text="{Binding Passport.Patronymic}" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" 
+                 TextChanged="Xbox_TextChanged" Margin="4,0,4,0" />
+
+                    <!-- Пол, Дата рождения -->
+                    <Label x:Name="bdayLabel" Grid.Column="0" Grid.Row="3" Content="Пол, Дата рождения" Grid.ColumnSpan="2"  ></Label>
+                    <ComboBox x:Name="gender" Grid.Column="2" Grid.Row="3" Margin="4,0,4,0" SelectedValue="{Binding Passport.Gender}" SelectedIndex="0" />
+                    <xctk:MaskedTextBox x:Name="brithdate" Text="{Binding Passport.BrithDate}" Grid.Column="3" Grid.Row="3" Mask="00/00/0000"  
+                     TextChanged="Xbox_TextChanged" Margin="4,0,4,0" />
+
+                    <!-- Тип документа -->
+                    <Label Grid.Column="0" Grid.Row="4" Content="Тип документа" Grid.ColumnSpan="2"  ></Label>
+                    <ComboBox x:Name="docType" SelectedValue="{Binding DocType}" SelectedIndex="0" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2" Margin="4,0,4,0"  />
+
+                    <!-- Серия и номер -->
+                    <Label Grid.Column="0" Grid.Row="5" Content="Серия и номер документа" Grid.ColumnSpan="2"  ></Label>
+                    <TextBox x:Name="series" Text="{Binding Passport.PassSeries}" Grid.Column="2" Grid.Row="5" Margin="4,0,4,0"  TextChanged="Xbox_TextChanged"/>
+                    <TextBox x:Name="number" Text="{Binding Passport.PassNumber}" Grid.Column="3" Grid.Row="5" Margin="4,0,4,0"  TextChanged="Xbox_TextChanged" />
+
+                    <!-- Кем и когда выдан -->
+                    <Label Grid.Column="0" Grid.Row="6" Content="Кем и когда выдан" Grid.ColumnSpan="2"  ></Label>
+                    <TextBox x:Name="location" Text="{Binding Passport.Location}" Grid.Column="2" Grid.Row="6" Margin="4,0,4,0"  TextChanged="Xbox_TextChanged"/>
+                    <xctk:MaskedTextBox x:Name="dateIs" Text="{Binding Passport.DateOfIssue}" Grid.Column="3" Grid.Row="6" Mask="00/00/0000" Margin="4,0,4,0"  />
+
+                    <!--Гражданство, Код подразделения-->
+                    <Label Grid.Column="0" Grid.Row="7" Content="Гражданство, Код подразделения" Grid.ColumnSpan="2"  ></Label>
+                    <ComboBox x:Name="sitizenship" SelectedValue="{Binding Passport.Sitizenship}" SelectedIndex="0" Grid.Column="2" Grid.Row="7" Margin="4,0,4,0"  />
+                    <xctk:MaskedTextBox x:Name="code" Text="{Binding Passport.PassCode}" Grid.Column="3" Grid.Row="7"  Mask="000-000" Margin="4,0,4,0" />
+
+                    <!--Адрес регистрации-->
+                    <Label Grid.Column="0" Grid.Row="8" Content="Адрес регистрации" Grid.ColumnSpan="2"  ></Label>
+                    <TextBox x:Name="regaddr" Text="{Binding Passport.RegistrationAdress}"  Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="2" Margin="4,0,4,0"  TextChanged="Xbox_TextChanged"/>
+
+                    <!--Телефон, email-->
+                    <Label Grid.Column="0" Grid.Row="9" Content="Телефон, email" Grid.ColumnSpan="2"  ></Label>
+                    <xctk:MaskedTextBox x:Name="phone" Text="{Binding Phone}" Grid.Column="2" Grid.Row="9"  Mask="+7(000)000-00-00" Margin="4,0,4,0" TextChanged="Xbox_TextChanged"/>
+                    <TextBox x:Name="email" Text="{Binding Email}" Grid.Column="3" Grid.Row="9" Margin="4,0,4,0"  TextChanged="Xbox_TextChanged"/>
+                    <!--Факультет, Специальность-->
+                    <Label Grid.Column="0" Grid.Row="10" Content="Факультет, Специальность" Grid.ColumnSpan="2"  ></Label>
+                    <ComboBox x:Name="dep" SelectedValue="{Binding Faculty.FacName}" SelectedIndex="0" Grid.Column="2" Grid.Row="10"   SelectionChanged="Dep_SelectionChanged" Margin="4,0,4,0"/>
+                    <ComboBox x:Name="fac" SelectedValue="{Binding Specialization.SpecName}" SelectedIndex="0" Grid.Column="3" Grid.Row="10" Margin="4,0,4,0"  />
+
+                    <!-- Дата поступления, Курс -->
+                    <Label Grid.Column="0" Grid.Row="11" Content="Дата поступления, Курс" Grid.ColumnSpan="2"  ></Label>
+                    <xctk:MaskedTextBox x:Name="dateAdm" Mask="00/00/0000" Text="{Binding Contract.ContractDateAdmission}" Grid.Column="2" Grid.Row="11" Margin="4,0,4,0"   TextChanged="Xbox_TextChanged"/>
+                    <ComboBox x:Name="course" SelectedValue="{Binding Course.CourseNumber}" SelectedIndex="0" Grid.Column="3" Grid.Row="11" Margin="4,0,4,0"  />
+
+                    <!-- Договор, Дата -->
+                    <Label Grid.Column="0" Grid.Row="12" Content="Договор, Дата договора" Grid.ColumnSpan="2"  ></Label>
+                    <TextBox x:Name="conNumber" Text="{Binding Contract.ContractNumber}" Grid.Column="2" Grid.Row="12" Margin="4,0,4,0"  TextChanged="Xbox_TextChanged"/>
+                    <xctk:MaskedTextBox x:Name="conDate" Mask="00/00/0000" Text="{Binding Contract.ContractDate}" Grid.Column="3" Grid.Row="12" Margin="4,0,4,0"  TextChanged="Xbox_TextChanged"/>
+
+
+                    <CheckBox x:Name="overRep" Content="Через представителя" Grid.Column="1" Grid.Row="13"  IsChecked="False" Checked="OverRep_Checked" Unchecked="OverRep_Checked" Margin="3,0,4,0"></CheckBox>
+                    <Button Grid.Column="2" Grid.Row="13"  Width="100"  Content="Отменить" IsCancel="True" Margin="50,0,50,0"></Button>
+                    <Button Grid.Column="3" Grid.Row="13"  Width="100"  Content="Сохранить" IsDefault="True" Click="SaveButton_Click" Margin="25,0,25,0"></Button>
+                </Grid>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem x:Name="rep" Visibility="Hidden">
+            <TabItem.Header>
+                <TextBlock Margin="3">Представитель</TextBlock>
+            </TabItem.Header>
+            <TabItem.Content>
+                <Grid ShowGridLines="False" Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- ФИО -->
+
+                    <Label Grid.Column="0" Content="Фамилия"  />
+                    <TextBox x:Name="familyR" Text="{Binding Representant.Passport.Family}" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" TextChanged="Xbox_TextChanged" />
+                    <Label Grid.Column="0" Grid.Row="1" Content="Имя"  ></Label>
+                    <TextBox x:Name="nameR" Text="{Binding Representant.Passport.Name}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"  TextChanged="Xbox_TextChanged"/>
+                    <Label Grid.Column="0" Grid.Row="2" Content="Отчество"  ></Label>
+                    <TextBox x:Name="patronR" Text="{Binding Representant.Passport.Patronymic}" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"  TextChanged="Xbox_TextChanged"/>
+
+
+                    <!-- Пол, Дата рождения -->
+                    <Label Grid.Column="0" Grid.Row="3" Content="Пол, Дата рождения"  ></Label>
+                    <ComboBox x:Name="genderR" Grid.Column="1" Grid.Row="3"  SelectedValue="{Binding Representant.Passport.Gender}"  SelectedIndex="0"/>
+                    <xctk:MaskedTextBox x:Name="brithdateR" Text="{Binding Representant.Passport.BrithDate}" Grid.Column="2" Grid.Row="3" Mask="00/00/0000"  TextChanged="Xbox_TextChanged"/>
+
+                    <!-- Тип документа -->
+                    <Label Grid.Column="0" Grid.Row="4" Content="Тип документа"  ></Label>
+                    <ComboBox x:Name="repDoc" SelectedIndex="0" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"  />
+
+                    <!-- Серия и номер -->
+                    <Label Grid.Column="0" Grid.Row="5" Content="Серия и номер документа"  ></Label>
+                    <TextBox x:Name="seriesR" Text="{Binding Representant.Passport.PassSeries}" Grid.Column="1" Grid.Row="5"  TextChanged="Xbox_TextChanged"/>
+                    <TextBox x:Name="numberR" Text="{Binding Representant.Passport.PassNumber}" Grid.Column="2" Grid.Row="5"  TextChanged="Xbox_TextChanged"/>
+
+                    <!-- Кем и когда выдан -->
+                    <Label Grid.Column="0" Grid.Row="6" Content="Кем и когда выдан"  ></Label>
+                    <TextBox x:Name="locationR" Text="{Binding Representant.Passport.Location}" Grid.Column="1" Grid.Row="6" TextChanged="Xbox_TextChanged" />
+                    <xctk:MaskedTextBox x:Name="dateIsR" Text="{Binding Representant.Passport.DateOfIssue}" Grid.Column="2" Grid.Row="6" Mask="00/00/0000"  TextChanged="Xbox_TextChanged"/>
+
+                    <!--Гражданство, Код подразделения-->
+                    <Label Grid.Column="0" Grid.Row="7" Content="Гражданство, Код подразделения"  ></Label>
+                    <ComboBox x:Name="sitizenshipR" SelectedValue="{Binding Representant.Passport.Sitizenship}" Grid.Column="1" Grid.Row="7"   SelectedIndex="0"/>
+                    <xctk:MaskedTextBox x:Name="codeR" Text="{Binding Representant.Passport.PassCode}" Grid.Column="2" Grid.Row="7"  Mask="000-000" TextChanged="Xbox_TextChanged"/>
+
+                    <!--Адрес регистрации-->
+                    <Label Grid.Column="0" Grid.Row="8" Content="Адрес регистрации"  ></Label>
+                    <TextBox x:Name="regaddrR" Text="{Binding Representant.Passport.RegistrationAdress}"  Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" TextChanged="Xbox_TextChanged" />
+
+                    <!--Телефон, email-->
+                    <Label Grid.Column="0" Grid.Row="9" Content="Телефон, email"  ></Label>
+                    <xctk:MaskedTextBox x:Name="phoneR" Text="{Binding Representant.RepPhone}" Grid.Column="1" Grid.Row="9"  Mask="+7(000)000-00-00" TextChanged="Xbox_TextChanged"/>
+                    <TextBox x:Name="emailR" Text="{Binding Representant.RepEmail}" Grid.Column="2" Grid.Row="9" TextChanged="Xbox_TextChanged" />
+
+                    <Label Grid.Column="0" Grid.Row="10" Content="Данные документа представителя"  ></Label>
+                    <ComboBox x:Name="docdoc" SelectedValue="{Binding Representant.RepDocType}" Grid.Column="1" Grid.Row="10"   SelectedIndex="0"/>
+                    <TextBox x:Name="docIs" Text="{Binding Representant.RepDoc}" Grid.Column="2" Grid.Row="10" TextChanged="Xbox_TextChanged" />
+
+                </Grid>
+            </TabItem.Content>
+        </TabItem>
+    </TabControl>
+</Window>
