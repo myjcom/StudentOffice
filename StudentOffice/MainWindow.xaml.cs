@@ -304,9 +304,14 @@ namespace StudentOffice
             pw.Show();
         }
 
-        private void EditMenuItem_Click(object sender, RoutedEventArgs e)
-        {
+        //private void EditMenuItem_Click(object sender, RoutedEventArgs e)
+        //{
 
+        //}
+
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 

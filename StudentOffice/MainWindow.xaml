@@ -85,14 +85,14 @@
             <MenuItem Header="Настройки" Margin="-3,3,4,4">
                 <MenuItem x:Name="config" Header="Конфигурация" Click="Config_Click"></MenuItem>
                 <Separator />
-                <MenuItem Header="Выход" ></MenuItem>
+                <MenuItem x:Name="exit" Header="Выход" Click="ExitMenuItem_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Сервис" Margin="-3,3,4,4">
+            <!--<MenuItem Header="Сервис" Margin="-3,3,4,4">
                 <MenuItem Header="Данные">
                     <MenuItem x:Name="import" Header="Импорт" Click="Import_Click"></MenuItem>
                     <MenuItem x:Name="export" Header="Экспорт" ></MenuItem>
                 </MenuItem>
-            </MenuItem>
+            </MenuItem>-->
         </Menu>
         <ComboBox x:Name="searchCBox" Grid.Row="1"  Width="180" Height="23" HorizontalAlignment="Center" VerticalContentAlignment="Center" SelectedIndex="0"/>
         <TextBox x:Name="searchData"  Grid.Row="1" Grid.Column="1" Width="180" Height="23" HorizontalAlignment="Center" VerticalContentAlignment="Center" />
@@ -118,10 +118,10 @@
                         <MenuItem x:Name="rall" Header="Представителя" Click="RemMenuItem_Click" CommandParameter="all"/>
                         <MenuItem x:Name="remail" Header="Студента" Click="RemMenuItem_Click" CommandParameter="email"/>
                     </MenuItem>
-                    <MenuItem Header="Перевод">
+                    <!--<MenuItem Header="Перевод">
                         <MenuItem x:Name="nextCourse" Header="На следующий курс" Click="EditMenuItem_Click" CommandParameter="all"/>
                         <MenuItem x:Name="otherSpec" Header="На другую специальность" Click="EditMenuItem_Click" CommandParameter="email"/>
-                    </MenuItem>
+                    </MenuItem>-->
                 </ContextMenu>
             </DataGrid.ContextMenu>
             <DataGrid.Columns>
