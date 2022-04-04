@@ -16,7 +16,7 @@ using System.Collections.ObjectModel;
 
 namespace StudentOffice
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IDisposable
     {
 
         private Word.Application application;
@@ -338,6 +338,13 @@ namespace StudentOffice
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        public void Dispose()
+        {
+            document.Close();
+            application.Quit();
+            GC.SuppressFinalize(this);
         }
     }
 
