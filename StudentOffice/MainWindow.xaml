@@ -87,16 +87,21 @@
                 <Separator />
                 <MenuItem x:Name="exit" Header="Выход" Click="ExitMenuItem_Click"></MenuItem>
             </MenuItem>
-            <!--<MenuItem Header="Сервис" Margin="-3,3,4,4">
+            <MenuItem Header="Сервис" Margin="-3,3,4,4">
                 <MenuItem Header="Данные">
                     <MenuItem x:Name="import" Header="Импорт" Click="Import_Click"></MenuItem>
-                    <MenuItem x:Name="export" Header="Экспорт" ></MenuItem>
+                    <MenuItem x:Name="export" Header="Экспорт" Click="Export_Click" ></MenuItem>
                 </MenuItem>
-            </MenuItem>-->
+            </MenuItem>
         </Menu>
-        <ComboBox x:Name="searchCBox" Grid.Row="1"  Width="180" Height="23" HorizontalAlignment="Center" VerticalContentAlignment="Center" SelectedIndex="0"/>
-        <TextBox x:Name="searchData"  Grid.Row="1" Grid.Column="1" Width="180" Height="23" HorizontalAlignment="Center" VerticalContentAlignment="Center" />
-        <Button x:Name="searchButton" Content="Поиск" Grid.Row="1" Grid.Column="2" Height="23" Width="123" HorizontalAlignment="Left"  Click="SearchButton_Click" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="searchCBox" Grid.Row="1"  Width="180" HorizontalAlignment="Center" VerticalContentAlignment="Center" SelectedIndex="0"/>
+        <TextBox x:Name="searchData"  Grid.Row="1" Grid.Column="1" Width="180" Height="23" HorizontalAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="searchButton" Content="Поиск" Grid.Row="1" Grid.Column="2" Height="23" Width="123" HorizontalAlignment="Left"  Click="SearchButton_Click" VerticalContentAlignment="Center">
+            <Button.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="6"
+Direction="270" Opacity="0.2" />
+            </Button.Effect>
+        </Button>
 
         <DataGrid Grid.Row="2" Grid.ColumnSpan="4" x:Name="clientDataGrid" AutoGenerateColumns="False"
                   EnableRowVirtualization="True"
@@ -157,12 +162,34 @@
         </DataGrid>
 
         <Button Content="Сохранить" Margin="3,3,3,3" Grid.Row="4" HorizontalAlignment="Center" 
-        Click="Button_Click" Width="124" VerticalContentAlignment="Center"/>
+        Click="Button_Click" Width="124" VerticalContentAlignment="Center">
+            <Button.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="6"
+Direction="270" Opacity="0.2" />
+            </Button.Effect>
+        </Button>
         <Button Content="Новый" Grid.Row="4"  Grid.Column="1" HorizontalAlignment="Center" Margin="3,3,3,3" 
-        Click="NewButton_Click" Width="124"/>
-        <ComboBox x:Name="printDoc" Grid.Row="4" Grid.Column="2" Width="124" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="3,3,3,3" SelectedIndex="0"/>
+        Click="NewButton_Click" Width="124">
+            <Button.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="6"
+Direction="270" Opacity="0.2" />
+            </Button.Effect>
+            
+        </Button>
+        <ComboBox x:Name="printDoc" Grid.Row="4" Grid.Column="2" Width="124" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="3,3,3,3" SelectedIndex="0">
+            <ComboBox.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="6"
+Direction="270" Opacity="0.2" />
+            </ComboBox.Effect>
+        </ComboBox>
         <Button x:Name="print" Grid.Row="4"  Grid.Column="3" Content="Печать" HorizontalAlignment="Center" Margin="3,3,3,3"  
-        Click="Print_Click" Width="124" VerticalContentAlignment="Center"/>
+        Click="Print_Click" Width="124" VerticalContentAlignment="Center">
+
+            <Button.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="6"
+Direction="270" Opacity="0.2" />
+            </Button.Effect>
+        </Button>
 
     </Grid>
 </Window>

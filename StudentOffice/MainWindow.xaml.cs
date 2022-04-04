@@ -10,6 +10,9 @@ using System.Windows.Controls;
 using StudentOffice.Settings;
 using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace StudentOffice
 {
@@ -298,11 +301,34 @@ namespace StudentOffice
             cfgWindow.ShowDialog();
         }
 
-        //private void Import_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var pw = new ProgressWindow();
-        //    pw.Show();
-        //}
+        private void Import_Click(object sender, RoutedEventArgs e)
+        {
+            //var pw = new ProgressWindow();
+            //pw.Show();
+            using (StreamReader sr = new("import.json"))
+            using (JsonReader reader = new JsonTextReader(sr))
+            {
+
+                List<Student> sdb = serializer.Deserialize<List<Student>>(reader);
+                //foreach(Student student in sdb)
+                //{
+                //    _context.Clients.Add(student);
+                //}
+
+                //_context.SaveChanges();
+                //clientDataGrid.Items.Refresh();
+                MessageBox.Show($"Импортировано {sdb.Count()} записей");
+            }
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+            using (StreamWriter file = File.CreateText($"export{DateTime.Now.ToShortDateString()}.json"))
+            {
+                var exList = (from Student in _context.Clients select Student).ToList();
+                serializer.Serialize(file, exList);
+            }
+        }
 
         //private void EditMenuItem_Click(object sender, RoutedEventArgs e)
         //{

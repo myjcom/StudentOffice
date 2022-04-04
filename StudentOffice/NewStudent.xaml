@@ -151,7 +151,7 @@
                     <!-- ФИО -->
                     <Label Grid.Column="0" Content="Фамилия" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="family" Text="{Binding Passport.Family}" Grid.Column="2" Grid.ColumnSpan="2"  
-                 TextChanged="Xbox_TextChanged" Margin="4,0,4,0" />
+                 TextChanged="Xbox_TextChanged" Margin="4,0,4,0"/>
 
                     <Label Grid.Column="0" Grid.Row="1" Content="Имя" Grid.ColumnSpan="2"></Label>
                     <TextBox x:Name="name" Text="{Binding Passport.Name}" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" 
@@ -210,8 +210,18 @@
 
 
                     <CheckBox x:Name="overRep" Content="Через представителя" Grid.Column="1" Grid.Row="13"  IsChecked="False" Checked="OverRep_Checked" Unchecked="OverRep_Checked" Margin="3,0,4,0"></CheckBox>
-                    <Button Grid.Column="2" Grid.Row="13"  Width="100"  Content="Отменить" IsCancel="True" Margin="50,0,50,0"></Button>
-                    <Button Grid.Column="3" Grid.Row="13"  Width="100"  Content="Сохранить" IsDefault="True" Click="SaveButton_Click" Margin="25,0,25,0"></Button>
+                    <Button Grid.Column="2" Grid.Row="13"  Width="100"  Content="Отменить" IsCancel="True" Margin="50,0,50,0">
+                        <Button.Effect>
+                            <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="6"
+Direction="270" Opacity="0.2" />
+                        </Button.Effect>
+                    </Button>
+                    <Button Grid.Column="3" Grid.Row="13"  Width="100"  Content="Сохранить" IsDefault="True" Click="SaveButton_Click" Margin="25,0,25,0">
+                        <Button.Effect>
+                            <DropShadowEffect Color="Black" ShadowDepth="3" BlurRadius="6"
+Direction="270" Opacity="0.2" />
+                        </Button.Effect>
+                    </Button>
                 </Grid>
             </TabItem.Content>
         </TabItem>
