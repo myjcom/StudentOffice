@@ -10,18 +10,18 @@ using System.Linq;
 
 namespace StudentOffice
 {
-    public partial class NewStudent : Window
+    public partial class NewStudent
     {
-        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
-        private Student newStudent = new();
-        public ClientDbContext _context;
+        private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        private readonly Student newStudent = new();
+        public ClientDbContext Context;
         private bool isSaved;
 
         public NewStudent(ref ClientDbContext ctx)
         {
             InitializeComponent();
-            _context = ctx;
-            Closing += new CancelEventHandler(CheckBeforeClosed);
+            Context = ctx;
+            Closing += CheckBeforeClosed;
 
             newStudent.Passport = new();
             newStudent.Representant = new();
@@ -59,9 +59,9 @@ namespace StudentOffice
             sitizenshipR.Items.Add("РФ");
 
             
-            dep.ItemsSource = (from o in _context.Faculites
+            dep.ItemsSource = (from o in Context.Faculites
                                select o.FacName).ToList();
-            course.ItemsSource = (from o in _context.Courses
+            course.ItemsSource = (from o in Context.Courses
                                   select o.CourseNumber).ToList();
         }
 
@@ -92,9 +92,9 @@ namespace StudentOffice
             newStudent.FullName = newStudent.Passport.Family + " " + newStudent.Passport.Name + " " + newStudent.Passport.Patronymic;
 
 
-            newStudent.Faculty = _context.Faculites.First(f => f.FacName == newStudent.Faculty.FacName);
-            newStudent.Specialization = _context.Specializations.First(f => f.SpecName == newStudent.Specialization.SpecName);
-            newStudent.Course = _context.Courses.First(f => f.CourseNumber == newStudent.Course.CourseNumber);
+            newStudent.Faculty = Context.Faculites.First(f => f.FacName == newStudent.Faculty.FacName);
+            newStudent.Specialization = Context.Specializations.First(f => f.SpecName == newStudent.Specialization.SpecName);
+            newStudent.Course = Context.Courses.First(f => f.CourseNumber == newStudent.Course.CourseNumber);
 
 
             ((MainWindow)Owner).AddClient(newStudent);
@@ -124,12 +124,12 @@ namespace StudentOffice
             
             if (ValidateValue(box.Text, pred))
             {
-                logger.Debug($"is valid {box.Text}");
+                Logger.Debug($"is valid {box.Text}");
                 SetBgColor(box, System.Windows.Media.Brushes.LightGreen);
             }
             else
             {
-                logger.Debug($"invalid {box.Text}");
+                Logger.Debug($"invalid {box.Text}");
                 SetBgColor(box, System.Windows.Media.Brushes.Red);
                 result &= false;
             }
@@ -140,12 +140,12 @@ namespace StudentOffice
 
             if (ValidateValue(box.Text, pred))
             {
-                //logger.Debug($"is valid value: {box.Text}");
+                //Logger.Debug($"is valid value: {box.Text}");
                 SetBgColor(box, System.Windows.Media.Brushes.White);
             }
             else
             {
-                //logger.Debug($"invalid value: {box.Text}");
+                //Logger.Debug($"invalid value: {box.Text}");
                 SetBgColor(box, System.Windows.Media.Brushes.Red);
                 result &= false;
             }
@@ -206,7 +206,7 @@ namespace StudentOffice
             return !string.IsNullOrEmpty(val) && pred(val);
         }
 
-        private void SetBgColor(object tb, System.Windows.Media.Brush color)
+        private static void SetBgColor(object tb, System.Windows.Media.Brush color)
         {
             ((TextBox)tb).Background = color;
         }
@@ -218,7 +218,7 @@ namespace StudentOffice
 
         private void Dep_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            fac.ItemsSource = (from f in _context.Specializations where f.Faculty.FacName == dep.SelectedItem.ToString() select f.SpecName).ToList();
+            fac.ItemsSource = (from f in Context.Specializations where f.Faculty.FacName == dep.SelectedItem.ToString() select f.SpecName).ToList();
             fac.SelectedIndex = 0;
         }
     }
